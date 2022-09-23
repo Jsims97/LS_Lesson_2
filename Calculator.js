@@ -1,20 +1,30 @@
-//ask the user for the first number
-//ask the user for the second number
-//ask the user for operation
-//perform the operation
-//display the result of the operation
+//ask the user for the first number;
+//ask the user for the second number;
+//ask the user for operation;
+//perform the operation;
+//display the result of the operation;
+const MESSAGES = require('./calculator_messages.json');
 
 const readline = require('readline-sync');
 
+function isInvalidNumber(number) {
+  return number.trim() === '' ||
+         Number(number) < 0   ||
+         Number.isNaN(Number(number));
+}
+
 function prompt(msg) {
-  console.log(`=> ${msg}`)
+  console.log(`=> ${msg} `);
 }
 
 function invalidNumber(num) {
   return num.trimStart() === '' || Number.isNaN(Number(num));
 }
 
-prompt("welcome to the calculator!");
+prompt(MESSAGES['welcome']);
+let name = readline.question();
+
+while (true) {
 
 prompt("what is the first number?");
 let number1 = readline.question();
@@ -59,3 +69,11 @@ switch(operation) {
 
 
 prompt(`The result is ${output}.`)
+
+//ask user for another calculation
+
+prompt(`Would you like to perform another calculation ${name}? (y/n)`)
+let answer = readline.question();
+
+if (answer !== 'y') break;
+}
