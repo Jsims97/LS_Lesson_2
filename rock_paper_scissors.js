@@ -8,16 +8,16 @@ const RL = require('readline-sync');
 
 
 
-validChoices = ['Rock', 'Paper', 'Scissors'];
+validChoices = ['rock', 'paper', 'scissors'];
 
 function prompt(msg){
   console.log(`=>${msg}`);
 }
 
-prompt(`Welcome to Jordan's ${validChoices.join(', ')}!\nPlease choose: \nRock , Paper, or Scissors`);
-let userAnswer = RL.question();
+prompt(`Welcome to Jordan's ${validChoices.join(', ')}!\nPlease choose: \nrock , paper, or scissors`);
+let userAnswer = RL.question().toLowerCase();
 
-while (!['Rock' , 'Paper' , 'Scissors'].includes(userAnswer)) {
+while (!['rock' , 'paper' , 'scissors'].includes(userAnswer)) {
   prompt(`Please choose: \nRock , Paper, or Scissors`);
   userAnswer = RL.question();
 
@@ -29,13 +29,13 @@ let computerAnswer = validChoices[randomIndex]
 
 prompt(`You chose ${userAnswer}. The computer chose ${computerAnswer}`)
 
-if ((userAnswer === 'Rock' && computerAnswer === 'Scissors') ||
-    (userAnswer === 'Scissors' &&  computerAnswer === 'Paper') ||
-    (userAnswer === 'Paper' && computerAnswer === 'Rock')) {
+if ((userAnswer === 'rock' && computerAnswer === 'scissors') ||
+    (userAnswer === 'scissors' &&  computerAnswer === 'paper') ||
+    (userAnswer === 'paper' && computerAnswer === 'rock')) {
       prompt('You beat Jordan!');
-    } else if ((userAnswer === 'Rock' && computerAnswer === 'Paper') ||
-              (userAnswer === 'Paper' && computerAnswer === 'Scissors') ||
-              (userAnswer === 'Scissors' && computerAnswer === 'Rock')){
+    } else if ((userAnswer === 'rock' && computerAnswer === 'paper') ||
+              (userAnswer === 'paper' && computerAnswer === 'scissors') ||
+              (userAnswer === 'scissors' && computerAnswer === 'rock')){
       prompt('Jordan beat you!');
     } else {
       prompt('Its a tie!');
